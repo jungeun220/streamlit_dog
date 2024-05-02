@@ -19,7 +19,7 @@ def main() :
         model = load_model("./model/keras_model.h5", compile=False)
 
         # Load the labels
-        class_names = open("./model/labels.txt", "r", encoding = 'utf-8').readlines()
+        class_names = open("./model/labels_dog.txt", "r", encoding = 'utf-8').readlines()
 
         # Create the array of the right shape to feed into the keras model
         # The 'length' or number of images you can put into the array is
@@ -52,7 +52,8 @@ def main() :
         print("Class:", class_name[2:], end="")
         print("Confidence Score:", confidence_score)
 
-        st.info('개의 품종은 ' + class_name[2:0] + '입니다.')
+        st.info('위 개의 품종은 "' + class_name[2:] + '" 입니다.')
+        st.info('정확도는 '  + str(round(confidence_score * 100)) + '% 입니다. ')
 
 if __name__ == '__main__' :
     main()
